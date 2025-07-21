@@ -21,7 +21,7 @@ body {
 }
   
 .nav-bar {
-    background-color: #1c1e1d99;
+    background-color: rgba(28, 30, 29, 0.4);
     border-bottom: 2px solid var(--deco-color);
     height: 100px;
     position: relative;
@@ -88,7 +88,7 @@ body {
 }
   
 .nav-menu li:hover {
-    background-color: #1c1e1d99;
+    background-color: rgba(28, 30, 29, 0.4);
 }
   
 .nav-menu li:hover a {

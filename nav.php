@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="CSS/nav.css" />
+<link rel="stylesheet" href="CSS/nav.css">
+<link href="https://api.fontshare.com/v2/css?f[]=zodiak@300&display=swap" rel="stylesheet">
 <nav class="nav-bar">
   <span class="vert-line left-line"></span>
   <div class="nav-inner">
