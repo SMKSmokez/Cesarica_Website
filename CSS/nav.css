@@ -1,0 +1,97 @@
+:root {
+    @import url('https://fonts.googleapis.com/css2?family=Gwendolyn:wght@700&display=swap');
+    --main-color:#1C1E1D;
+    --second-color:#641B2E;
+    --deco-color:#F5C45E;
+    --text-normal:#F9F9F9;
+    --text-fancy:#F5C45E;
+    --main-font: 'aviano-flare', sans-serif;
+    --main-font-style: normal;
+    --main-font-weight: 400;
+    --second-font: 'Zodiak', serif;
+    --fancy-font:"Gwendolyn", cursive;
+    --fancy-font-weight: 700;
+    --fancy-font-style: normal;
+}
+
+body {
+    margin: 0;
+    background-color: #111;
+    font-family: var(--second-font);
+}
+  
+.nav-bar {
+    background-color: #1c1e1d99;
+    border-bottom: 2px solid var(--deco-color);
+    height: 100px;
+    position: relative;
+  z-index: 100;
+}
+  
+.vert-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--deco-color);
+    z-index: 101;
+}
+  
+.left-line {
+    left: 10%;
+ }
+  
+.right-line {
+    right: 10%;
+}
+  
+.nav-inner {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 1px;
+    height: 100px;
+}
+  
+.nav-menu {
+    display: contents;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+  
+.nav-menu li {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+  
+.nav-menu li a {
+    text-decoration: none;
+    color: var(--text-normal);
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 100px;
+    user-select: none;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+  
+.nav-menu li:hover {
+    background-color: #1c1e1d99;
+}
+  
+.nav-menu li:hover a {
+    color: var(--deco-color);
+}
+  
