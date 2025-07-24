@@ -1,0 +1,169 @@
+body {
+    font-family: var(--second-font);
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    display: block;
+    min-height: 100vh;
+}
+
+.title-card-container {
+    position: relative;
+    width: 100%;
+    height: 750px;
+    background-color: hsl(120, 50%, 50%);
+    margin: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.menu-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--deco-color);
+    font-size: 3.5em;
+    text-shadow: -5px 5px 4px rgba(0, 0, 0, 0.8);
+    margin: 0;
+}
+
+.menu-list-container {
+    background-color: #1a1a1a;
+    padding: 50px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-list-container::before,
+.menu-list-container::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: 0;
+    width: 1500px;
+    height: 300rem;
+    background: radial-gradient(circle,
+        var(--second-color) 0%,
+        var(--second-color) 30%,
+        rgba(0, 0, 0, 0) 80%);
+    opacity: 0.8;
+}
+
+.menu-list-container::before {
+    top: -600px;
+    left: -800px;
+    transform: rotate(25deg);
+}
+
+.menu-list-container::after {
+    bottom: -700px;
+    right: -600px;
+    transform: rotate(-15deg);
+    background: radial-gradient(circle,
+        var(--second-color) 0%,
+        var(--second-color) 25%,
+        rgba(0, 0, 0, 0) 75%);
+    opacity: 0.8;
+}
+
+.menu-list {
+    width: 80%;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(8px);
+}
+
+.menu-section {
+    margin-bottom: 20px;
+}
+
+.menu-section h3 {
+    color: var(--deco-color);
+    font-size: 60px;
+    margin: 0 0 -5px 0;
+    text-align: left;
+}
+
+.menu-section .subsection-title {
+    color: var(--deco-color);
+    font-size: 45px;
+    margin: 30px 0 -5px 0;
+    text-align: left;
+    font-weight: normal;
+    font-style: italic;
+    display: block;
+}
+
+.menu-section .double-underline {
+    border-bottom: double 4px var(--deco-color);
+    margin-bottom: 10px;
+    margin-top: -5px;
+}
+
+/* Menu Item Layout */
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0 5px 0;
+    color: #fff;
+}
+
+.menu-item .name {
+    color: var(--deco-color);
+    font-size: 50px;
+    font-weight: bold;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-bottom: 0;
+}
+
+.menu-item .line-fill {
+    flex-grow: 1;
+    height: 2px;
+    background-color: var(--deco-color);
+    margin: 0 20px;
+    position: relative;
+    top: -5px;
+}
+
+.menu-item .price {
+    color: var(--deco-color);
+    font-size: 40px;
+    font-weight: bold;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.ingredients {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.3;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+/* Optional weight styling if used */
+.menu-item .weight {
+    display: inline-block;
+    width: 80px;
+    text-align: right;
+    margin-right: 20px;
+    padding-right: 20px;
+    position: relative;
+}
+
+.menu-item .weight::after {
+    content: "";
+    position: absolute;
+    right: -5px;
+    color: rgba(255, 255, 255, 0.3);
+}

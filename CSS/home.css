@@ -1,0 +1,10 @@
+.title-card-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: hsl(120, 50%, 50%);
+    margin: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
