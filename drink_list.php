@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="CSS/drinks.css">
+        <title>Our Drinks - CESARICA</title>
     </head>
     <body>
         <?php require_once 'nav.php';?>
@@ -305,12 +306,6 @@
 
                 <div class="subsection">
                   <span class="subsection-title">Cognac / Brandy</span>
-                  <div class="menu-item">
-                        <div class="item-details">
-                            <span class="name">Bochateva</span>
-                        </div>
-                        <span class="price"><span class="price">7</span></span>
-                    </div>
                     <div class="menu-item">
                         <div class="item-details">
                             <span class="name">Hennessy</span>

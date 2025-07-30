@@ -1,10 +1,623 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--second-color);
+}
+
+section {
+  position: relative;
+  height: 100vh;
+  padding: 40px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1, h2, h3 {
+  font-family: var(--main-font);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.page-container{
+  position: relative;
+  overflow: hidden;
+  margin-top: -102px; /* Pull up behind navbar */
+  z-index: 0; /* Place behind navbar */
+}
+/* Title Section with Video and Curtains */
 .title-card-container {
-    position: relative;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--deco-color);
+  text-align: center;
+}
+
+/* Video Background */
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  background-color: #300;
+}
+
+.bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Curtains */
+.curtain {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.curtain-left {
+  left: 0;
+}
+
+.curtain-right {
+  right: 0;
+  transform: rotateY(180deg);
+}
+
+/* Title Section Content */
+.hero-content {
+  position: relative;
+  z-index: 3;
+  padding: 40px;
+  border-radius: 12px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 30%;
+}
+
+.main-title {
+  font-size: 3.5em;
+  font-weight: bold;
+  color: var(--deco-color);
+}
+
+.sub-title {
+  font-size: 1.5em;
+  color: var(--deco-color);
+  margin-bottom: 30px;
+}
+
+.experience-button {
+  font-size: 25px;
+  padding: 20px 10px;
+  border: 2px solid var(--deco-color);
+  background: transparent;
+  color: var(--deco-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: absolute;
+  bottom: 130px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+}
+
+.experience-button:hover {
+  background-color: var(--deco-color);
+  color: var(--main-color);
+}
+
+/* Cuisine */
+.cuisine-card-container {
+  background: var(--main-color);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 0;
+}
+
+.cuisine-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  z-index: 2;
+}
+
+.cuisine-image-wrapper {
+  width: 1024px;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.cuisine-image-background {
+  position: absolute;
+  left: 0;
+  width: 400px; /* Fixed background width */
+  height: 100%;
+  background: linear-gradient(to left, var(--second-color), transparent);
+  opacity: 0.85;
+  z-index: 0;
+}
+
+.cuisine-image {
+  width: 680px;
+  height: auto;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.cuisine-text {
+  width: 650px;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.cuisine-subtitle {
+  font-size: 40px;
+  color: var(--deco-color);
+  line-height: 0.8;
+}
+
+.cuisine-title {
+  font-size: 50px;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 20px;
+  line-height: 0.9;
+}
+
+.cuisine-description {
+  font-size: 20px;
+  line-height: 1.5;
+  max-width: 600px;
+  margin-bottom: 50px;
+  align-self: center;
+}
+
+.cuisine-button {
+  width: 260px;
+  padding: 5px 15px;
+  font-size: 25px;
+  background: transparent;
+  border: 2px solid var(--deco-color);
+  border-radius: 2px;
+  color: var(--deco-color);
+  cursor: pointer;
+  transition: 0.3s ease;
+  align-self: center;
+}
+
+.cuisine-button:hover {
+  background: var(--deco-color);
+  color: #111;
+}
+
+/* Specials Section */
+.menu-specials-card-container {
+  background: linear-gradient(
+    to bottom,
+    rgb(28, 30, 29) 0%,
+    rgba(100, 27, 46, 0.7) 30%,
+    rgba(100, 27, 46, 0.9) 50%,
+    rgba(100, 27, 46, 0.7) 70%,
+    rgb(28, 30, 29) 100%
+  );
+  height: 110vh;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-specials-content {
+  align-items: center;
+  padding: 0 220px;
+  width: 100%;
+  z-index: 2;
+}
+
+.menu-subtitle {
+  font-family: 'Gwendolyn', cursive;
+  font-size: 40px;
+  color: var(--deco-color);
+  margin-bottom: 0.2em;
+  line-height: 1;
+}
+
+.menu-title {
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 40px;
+}
+
+.menu-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  color: #fff;
+}
+
+.menu-name {
+  font-size: 40px;
+  text-align: left;
+}
+
+.menu-details {
+  display: flex;
+  gap: 40px;
+  font-size: 40px;
+}
+
+.menu-grams,
+.menu-price {
+  min-width: 80px;
+  text-align: right;
+}
+
+.view-more-specials {
+  width: 200px;
+  padding: 5px 15px;
+  font-size: 25px;
+  background: transparent;
+  border: 2px solid var(--deco-color);
+  border-radius: 2px;
+  color: var(--deco-color);
+  cursor: pointer;
+  transition: 0.3s ease;
+  align-self: center;
+}
+
+.view-more-specials:hover {
+  background: var(--deco-color);
+  color: #111;
+}
+
+.menu-deco {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: 0.8;
+  z-index: 1;
+}
+
+/* Cocktails */
+.cocktail-card-container {
+  align-items: center;
+  text-align: center;
+  background-color: var(--main-color);
+  padding: 220px 110px 40px 110px;
+  position: relative;
+  height: 130vh;
+}
+
+.cocktail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 80px;
+  column-gap: 200px;
+  max-width: 1200px;
+  position: relative;
+  justify-content: center;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 120px;
+  min-width: 600px;
+  position: relative;
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.name {
+  color: var(--deco-color);
+  font-size: 45px;
+  line-height: 0.9;
+}
+
+.ingredients {
+  color: #ddd;
+  font-size: 15px;
+}
+
+.price {
+  color: #fff;
+  font-weight: bold;
+  font-size: 35px;
+  position: absolute;
+  right: 0;
+  top: 25px;
+}
+
+.view-more-drinks {
+  width: 220px;
+  padding: 5px 15px;
+  font-size: 25px;
+  background: transparent;
+  border: 2px solid var(--deco-color);
+  border-radius: 2px;
+  color: var(--deco-color);
+  cursor: pointer;
+  transition: 0.3s ease;
+  align-self: center;
+  margin-top: 300px;
+}
+
+.view-more-drinks:hover {
+  background: var(--deco-color);
+  color: #111;
+}
+
+/* Cigars */
+.cigar-card-container {
+  background: var(--main-color);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 0;
+}
+
+.cigar-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  z-index: 2;
+}
+
+.cigar-text {
+  width: 650px;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  order: 1; /* Keeps text on the left */
+}
+
+.cigar-subtitle {
+  font-size: 40px;
+  color: var(--deco-color);
+  line-height: 0.8;
+}
+
+.cigar-title {
+  font-size: 50px;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 20px;
+  line-height: 0.9;
+}
+
+.cigar-description {
+  font-size: 20px;
+  line-height: 1.5;
+  max-width: 600px;
+  margin-bottom: 50px;
+  align-self: center;
+}
+
+.cigar-button {
+  width: 260px;
+  padding: 5px 15px;
+  font-size: 25px;
+  background: transparent;
+  border: 2px solid var(--deco-color);
+  border-radius: 2px;
+  color: var(--deco-color);
+  cursor: pointer;
+  transition: 0.3s ease;
+  align-self: center;
+}
+
+.cigar-button:hover {
+  background: var(--deco-color);
+  color: #111;
+}
+
+.cigar-image-wrapper {
+  width: 1024px;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  order: 2; /* Moves image wrapper to the right */
+}
+
+.cigar-image-background {
+  position: absolute;
+  right: 0;
+  width: 400px;
+  height: 100%;
+  background: linear-gradient(to right, var(--second-color), transparent);
+  opacity: 0.85;
+  z-index: 0;
+}
+
+.cigar-image {
+  width: 700px;
+  height: 450px;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+}
+
+/*Decorations*/
+.section-connector-1 {
+    position: absolute;
+    left: 49.5%;
+    transform: translateY(-25%);
+    width: 525px;      
+    height: 400px;    
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.section-connector-1 img {
     width: 100%;
-    height: 100vh;
-    background-color: hsl(120, 50%, 50%);
-    margin: 0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    height: 100%;    
+    display: block;
+    object-fit: fill; 
+}
+
+.section-connector-2 {
+    position: absolute;
+    left: 49.5%;
+    transform: rotateY(180deg) translateY(-80%);
+    width: 525px;      
+    height: 350px;    
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.section-connector-2 img {
+    width: 100%;
+    height: 100%;    
+    display: block;
+    object-fit: fill; 
+}
+
+.section-connector-3 {
+    position: absolute;
+    left: 49.5%;
+    transform: translateY(5%);
+    width: 525px;      
+    height: 600px;    
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.section-connector-3 img {
+    width: 100%;
+    height: 100%;    
+    display: block;
+    object-fit: fill; 
+}
+.section-connector-4 {
+    position: absolute;
+    left: 24%;
+    transform: translateY(-25%);
+    width: 1000px;      
+    height: 356px;    
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.section-connector-4 img {
+    width: 100%;
+    height: 100%;    
+    display: block;
+    object-fit: fill; 
+}
+
+.section-connector-5 {
+    position: absolute;
+    left: 24%;
+    transform: rotateX(180deg) translateY(-75%);
+    width: 1000px;
+    height: 300px;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.section-connector-5 img {
+    width: 100%;
+    height: 100%;    
+    display: block;
+    object-fit: fill; 
+}
+
+.section-connector-6 {
+    position: absolute;
+    right: 49.5%;
+    transform: rotateX(180deg) translateY(15%);
+    width: 525px;      
+    height: 350px;    
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.section-connector-6 img {
+    width: 100%;
+    height: 100%;    
+    display: block;
+    object-fit: fill; 
+}
+
+.section-connector-7 {
+    position: absolute;
+    right: 49.5%;
+    transform: translateY(100%);
+    width: 525px;      
+    height: 300px;    
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.section-connector-7 img {
+    width: 100%;
+    height: 100%;    
+    display: block;
+    object-fit: fill; 
+}
+
+/* Footer */
+.footer-container {
+  background-color: var(--main-color);
+  padding: 30px 0;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+.footer-logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--deco-color);
+  margin-bottom: 10px;
 }
