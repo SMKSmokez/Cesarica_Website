@@ -143,16 +143,16 @@
 				</div>
 				<div class="menu-item">
 					<div class="item-details">
-						<span class="name"><b>Cocktail</b></span>
+						<span class="name"><b>Autumn Standard</b></span>
 						<span class="price">10</span>
-						<span class="ingredients">Hendrik's | Simple Syrup | Lime Juice | Sparkling</span>
+						<span class="ingredients">Whiskey | Elderflower Syrup | Lime Juice | Egg White | Angostura Bitters</span>
 					</div>
 				</div>
 				<div class="menu-item">
 					<div class="item-details">
-						<span class="name"><b>Cocktail</b></span>
+						<span class="name"><b>Tropico Rosa</b></span>
 						<span class="price">10</span>
-						<span class="ingredients">Hendrik's | Simple Syrup | Lime Juice | Sparkling</span>
+						<span class="ingredients">Vodka | Lime | Brown Sugar | Mint | Berries | Sprite | Melon Syrup</span>
 					</div>
 				</div>
 				<div class="menu-item">
@@ -215,7 +215,7 @@
 		<!-- Footer -->
 		<footer class="footer-container">
 			<div class="footer-logo">CESARICA</div>
-			<p>Estarer Ulica, City 80100<br>Phone Number<br>Open 08.00 - 01.00</p>
+			<p>Bulevar Teuta, Ulcinj 85360<br>069 044 070<br>Open 08.00 - 01.00</p>
 		</footer>
 	</div>
 </body>
