@@ -541,8 +541,8 @@ h1, h2, h3 {
 }
 .section-connector-4 {
     position: absolute;
-    left: 24%;
-    transform: translateY(-25%);
+    left: 50.15%;
+    transform: translate(-50%, -25%);
     width: 1000px;      
     height: 356px;    
     z-index: 1000;
@@ -558,8 +558,8 @@ h1, h2, h3 {
 
 .section-connector-5 {
     position: absolute;
-    left: 24%;
-    transform: rotateX(180deg) translateY(-75%);
+    left: 50.15%;
+    transform: rotateX(180deg) translate(-50%, -75%);
     width: 1000px;
     height: 300px;
     z-index: 1000;
@@ -605,25 +605,4 @@ h1, h2, h3 {
     height: 100%;    
     display: block;
     object-fit: fill; 
-}
-
-/* Footer */
-.footer-container {
-  background-color: var(--main-color);
-  padding: 30px 0;
-  text-align: center;
-  font-size: 0.9em;
-}
-
-.footer-logo {
-  font-size: 1.5em;
-  font-weight: bold;
-  color: var(--deco-color);
-  margin-bottom: 10px;
-}
-
-.footer-container p {
-  color: var(--text-normal);
-  font-size: 24px;
-  line-height: 1.8;
 }

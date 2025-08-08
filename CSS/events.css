@@ -1,0 +1,91 @@
+body {
+    font-family: var(--second-font);
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    display: block;
+    min-height: 100vh;
+}
+
+.title-card-container {
+    position: relative;
+    width: 100%;
+    height: 750px;
+    background-image: url("../Images/drinks_background.jpg"); /* Fix path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: -102px; /* Pull up behind navbar */
+    z-index: 0; /* Place behind navbar */
+}
+
+.events-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--deco-color);
+    font-size: 3.5em;
+    text-shadow: -5px 5px 4px rgba(0, 0, 0, 0.8);
+    margin: 0;
+}
+
+.text-pop {
+    position: absolute;
+    width: 1000px;
+    height: 30px;
+    left: 50%;
+    transform: translate(-50%, 75%);
+}
+.event-section {
+    width: 80%;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.event-section h3 {
+    color: var(--deco-color);
+    font-size: 60px;
+    margin: 0 0 -5px 0;
+    text-align: center;
+}
+
+.event-list-container {
+    background-color: var(--main-color);
+    padding: 50px 0;
+    position: relative;
+    overflow: hidden;
+    align-items: center;
+}
+
+.event-image-with-border {
+  position: relative;
+  width: 575px;  /* or whatever size you want */
+  height: 385px;
+  margin: 25px;
+}
+.event-image-with-border img {
+    border-radius: 10px;
+}
+
+.event-image-with-border img,
+.event-image-with-border svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.event-image-with-border svg {
+  transform: scale(1.025);
+  pointer-events: none; /* so SVG doesn't block mouse events */
+  z-index: 10;          /* higher than image */
+}
+

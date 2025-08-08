@@ -1,0 +1,12 @@
+RewriteEngine On
+
+RewriteRule ^$ /Cesarica_Website/Controllers/index.php [L,NC]
+RewriteRule ^home$ /Cesarica_Website/Controllers/index.php [L,NC]
+RewriteRule ^cuisine$ /Cesarica_Website/Controllers/food_showcase.php [L,NC]
+RewriteRule ^menu$ /Cesarica_Website/Controllers/menu.php [L,NC]
+RewriteRule ^wine$ /Cesarica_Website/Controllers/wine_list.php [L,NC]
+RewriteRule ^drinks$ /Cesarica_Website/Controllers/drink_list.php [L,NC]
+RewriteRule ^cigars$ /Cesarica_Website/Controllers/cigar_list.php [L,NC]
+RewriteRule ^events$ /Cesarica_Website/Controllers/events.php [L,NC]
+
+ErrorDocument 404 /Cesarica_Website/Pages/404.php

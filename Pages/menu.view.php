@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/menu.css">
-    <title>Menu - CESARICA</title>
-</head>
+<?php require_once 'Parts/head.php'?>
 <body>
-    <?php require_once 'nav.php';?>
+    <?php require_once 'Parts/nav.php';?>
     <div class="title-card-container">
         <h2 class="menu-title">Menu</h2>
     </div>

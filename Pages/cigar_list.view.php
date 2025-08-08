@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/cigar.css">
-    <title>Cigar Menu - CESARICA</title>
-</head>
+<?php require_once 'Parts/head.php'?>
 <body>
-    <?php require_once 'nav.php';?>
+    <?php require_once 'Parts/nav.php';?>
 
     <div class="title-card-container">
         <h2 class="menu-title">Cigars</h2>
@@ -34,7 +29,7 @@
                 <div class="ingredients">Origin - Cuba | Burn Time - 30-40min | Aroma's - Cedar, Pepper, Cream</div>
 
                 <div class="menu-item cigar">
-                    <span class="name">Romeo y Julieta Churchill</span>
+                    <span class="name">Romeo I Julieta Churchill</span>
                     <span class="line-fill"></span>
                     <span class="price">28</span>
                 </div>
