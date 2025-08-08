@@ -2,7 +2,7 @@ body {
     font-family: var(--second-font);
     margin: 0;
     padding: 0;
-    background-color: #1a1a1a;
+    background-color: var(--main-color);
     display: block;
     min-height: 100vh;
 }
@@ -11,12 +11,12 @@ body {
     position: relative;
     width: 100%;
     height: 750px;
-    background-image: url("../Images/drinks_background.jpg"); /* Fix path */
+    background-image: url("../Images/drinks_background.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    margin-top: -102px; /* Pull up behind navbar */
-    z-index: 0; /* Place behind navbar */
+    margin-top: -102px;
+    z-index: 0;
 }
 
 .events-title {
@@ -34,13 +34,21 @@ body {
 .text-pop {
     position: absolute;
     width: 1000px;
-    height: 30px;
+    height: 60px;
     left: 50%;
-    transform: translate(-50%, 75%);
+    transform: translate(-50%, 35%);
 }
+
+.event-list-container {
+    background-color: var(--main-color);
+    padding: 50px 0 0 0;
+    position: relative;
+    overflow: hidden;
+    align-items: center;
+}
+
 .event-section {
-    width: 80%;
-    max-width: 1160px;
+    width: 65%;
     margin: 0 auto;
     padding: 20px;
     border-radius: 10px;
@@ -50,42 +58,49 @@ body {
 
 .event-section h3 {
     color: var(--deco-color);
-    font-size: 60px;
+    font-size: 70px;
     margin: 0 0 -5px 0;
     text-align: center;
 }
 
-.event-list-container {
-    background-color: var(--main-color);
-    padding: 50px 0;
-    position: relative;
-    overflow: hidden;
-    align-items: center;
+.event-row {
+    display: flex;
+    gap: 20px;
+    margin: 50px 0;
 }
 
-.event-image-with-border {
-  position: relative;
-  width: 575px;  /* or whatever size you want */
-  height: 385px;
-  margin: 25px;
+.event-item {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 10px;
+    flex: 1;
 }
-.event-image-with-border img {
+
+.event-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 10px;
 }
 
-.event-image-with-border img,
-.event-image-with-border svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
+.banner-row .event-item.banner {
+    flex: 3;
 }
 
-.event-image-with-border svg {
-  transform: scale(1.025);
-  pointer-events: none; /* so SVG doesn't block mouse events */
-  z-index: 10;          /* higher than image */
+.three-image-row .event-item {
+    flex: 1;
 }
 
+.two-image-row .event-item {
+    flex: 1;
+}
+
+.overlay-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    transform: scale(1.025);
+}

@@ -201,10 +201,8 @@
             <div class="section-connector-7">
                 <img src="Images\Deco_1.svg" alt="gold line divider" />
             </div>
-
 		</section>
-
-		<?php require_once "Parts/footer.php" ?>
 	</div>
+	<?php require_once "Parts/footer.php" ?>
 </body>
 </html>

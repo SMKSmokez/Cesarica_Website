@@ -2,7 +2,7 @@ body {
     font-family: var(--second-font);
     margin: 0;
     padding: 0;
-    background-color: #1a1a1a;
+    background-color: var(--main-color);
     display: block;
     min-height: 100vh;
 }
@@ -11,7 +11,7 @@ body {
     position: relative;
     width: 100%;
     height: 750px;
-    background-image: url("../Images/R61_3939.jpg"); /* Fix path */
+    background-image: url("../Images/Showcase/R61_3939.jpg"); /* Fix path */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -33,7 +33,7 @@ body {
 
 .menu-list-container {
     background-color: var(--main-color);
-    padding: 50px 0;
+    padding: 50px 0 0 0;
     position: relative;
     overflow: hidden;
 }

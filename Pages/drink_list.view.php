@@ -516,8 +516,8 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
+        <?php require_once "Parts/footer.php"?>
     </body>
 </html>

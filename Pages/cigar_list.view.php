@@ -51,6 +51,7 @@
 
             </div>
         </div>
+        <?php require_once "Parts/footer.php"?>
     </div>
 </body>
 </html>
