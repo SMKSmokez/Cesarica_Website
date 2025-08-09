@@ -48,12 +48,21 @@
 }
 
 .nav-bar {
-    background-color: rgba(28, 30, 29, 0.8);
-    border-bottom: 2px solid var(--deco-color);
-    height: 100px;
-    position: relative;
-    z-index: 100;
+  background-color: rgba(28, 30, 29, 0.8);
+  border-bottom: 2px solid var(--deco-color);
+  height: 100px;
+  position: relative;
+  top: -100px;  /* start hidden */
+  left: 0;
+  right: 0;
+  transition: top 0.8s ease;
+  z-index: 100;
 }
+
+.nav-bar.show {
+  top: 0;
+}
+
   
 .vert-line {
     position: absolute;

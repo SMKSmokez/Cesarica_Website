@@ -66,8 +66,11 @@ h1, h2, h3 {
   position: absolute;
   top: 0;
   height: 100%;
-  z-index: 2;
+  width: 50%;
+  object-fit: cover;
   pointer-events: none;
+  z-index: 2;
+  transition: transform 500ms ease-in-out, opacity 500ms ease-in-out;
 }
 
 .curtain-left {
@@ -78,6 +81,39 @@ h1, h2, h3 {
   right: 0;
   transform: rotateY(180deg);
 }
+
+/* Initially: closed curtains visible */
+.curtain-closed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Initially: open curtains hidden */
+.curtain-open {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Animation: move closed curtains off screen and fade out */
+.curtain-closed.animate {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.curtain-closed.curtain-right {
+  transform: rotateY(180deg);
+}
+/* For right curtain, keep the mirror rotation during move */
+.curtain-closed.curtain-right.animate {
+  transform: rotateY(180deg) translateX(-100%);
+}
+
+/* Animation: fade in open curtains */
+.curtain-open.animate {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 
 /* Title Section Content */
 .hero-content {

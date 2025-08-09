@@ -1,4 +1,6 @@
 <?php
+// Start output buffering (optional but helps prevent premature output)
+ob_start();
 
 // Define available routes
 $routes = [
@@ -11,20 +13,25 @@ $routes = [
     '/Events' => 'Controllers/events.php',
 ];
 
-// Parse the URI path and normalize
+// Parse and normalize URI path
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $route = rtrim($uri, '/');
 $route = $route === '' ? '/' : $route;
 
-// Redirect '/' to '/Home'
+// Debug - remove after testing
+// var_dump($route); exit();
+
 if ($route === '/') {
-    header("Location: /Home", true, 301); // Use 301 for permanent redirect
+    header("Location: /Home", true, 301);
     exit();
 }
 
-// Route to appropriate controller
+// Route to controller if exists
 if (array_key_exists($route, $routes)) {
     require $routes[$route];
 } else {
-    abort(); // Your existing abort function handles 404
+    abort(); // your 404 handler
 }
+
+// Flush output buffer if used
+ob_end_flush();

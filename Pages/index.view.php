@@ -7,19 +7,26 @@
 	<div class="page-container">
 		<!-- Title Section -->
 		<section class="title-card-container">
-			<div class="video-background">
-				<video autoplay muted loop playsinline class="bg-video">
-					<source src="path/to/your/video.mp4" type="video/mp4">
-					Your browser does not support HTML5 video.
-				</video>
-			</div>
-			<img src="Images\Curtain_Open.png" class="curtain curtain-left" alt="left curtain">
-			<img src="Images\Curtain_Open.png" class="curtain curtain-right" alt="right curtain">
-			<div class="hero-content">
-				<h1 class="main-title">CESARICA</h1>
-				<h2 class="sub-title">steakhouse & club</h2>
-			</div>
-			<button class="experience-button">Reserve An Experience</button>
+		  <div class="video-background">
+		    <video autoplay muted loop playsinline class="bg-video">
+		      <source src="path/to/your/video.mp4" type="video/mp4">
+		      Your browser does not support HTML5 video.
+		    </video>
+		  </div>
+
+		  <!-- Closed curtains -->
+		  <img src="Images/Curtain_Closed.png" class="curtain curtain-left curtain-closed" alt="left curtain closed">
+		  <img src="Images/Curtain_Closed.png" class="curtain curtain-right rightx2 curtain-closed" alt="right curtain closed">
+
+		  <!-- Open curtains (start hidden) -->
+		  <img src="Images/Curtain_Open.png" class="curtain curtain-left curtain-open" alt="left curtain open">
+		  <img src="Images/Curtain_Open.png" class="curtain curtain-right curtain-open" alt="right curtain open">
+
+		  <div class="hero-content">
+		    <h1 class="main-title">CESARICA</h1>
+		    <h2 class="sub-title">steakhouse & club</h2>
+		  </div>
+		  <button class="experience-button">Reserve An Experience</button>
 		</section>
 
         <div class="section-connector-1">
@@ -204,5 +211,36 @@
 		</section>
 	</div>
 	<?php require_once "Parts/footer.php" ?>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+  		  const navbar = document.querySelector('.nav-bar');
+  		  if (!navbar) return;
+
+  		  // Start with navbar hidden (no .show)
+  		  navbar.classList.remove('show');
+
+  		  // Trigger dropdown animation by adding .show after a short delay
+  		  setTimeout(() => {
+  		    navbar.classList.add('show');
+  		  }, 100);
+  		});
+		
+		document.addEventListener("DOMContentLoaded", function() {
+		  const closedCurtains = document.querySelectorAll('.curtain-closed');
+		  const openCurtains = document.querySelectorAll('.curtain-open');
+
+		  // Show closed curtains initially for 3 seconds
+		  setTimeout(() => {
+		    // Start the 2-second morph animation
+		    closedCurtains.forEach(c => c.classList.add('animate'));
+		    openCurtains.forEach(c => c.classList.add('animate'));
+		  }, 1000);
+	  
+		  // After the 2-second animation (total 5s), remove the closed curtains
+		  setTimeout(() => {
+		    closedCurtains.forEach(c => c.remove());
+		  }, 3000);  // 3s wait + 2s animation = 5s total
+		});
+	</script>
 </body>
 </html>
