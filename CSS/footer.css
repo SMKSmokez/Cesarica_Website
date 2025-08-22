@@ -1,8 +1,7 @@
 .footer-container {
   background-color: transparent;
-  padding: 30px 0;
+  padding: 30px 0 60px 0;
   text-align: center;
-  font-size: 0.9em;
   z-index: 100;
   position: relative;
 }
@@ -18,4 +17,11 @@
   color: var(--text-normal);
   font-size: 24px;
   line-height: 1.8;
+}
+
+@media (max-width: 786px) {
+  .footer-container p{
+    font-size: 15px;
+    line-height: 1.5;
+  }
 }

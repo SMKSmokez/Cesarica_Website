@@ -19,9 +19,16 @@
 		  <img src="Images/Curtain_Closed.png" class="curtain curtain-right rightx2 curtain-closed" alt="right curtain closed">
 
 		  <!-- Open curtains (start hidden) -->
-		  <img src="Images/Curtain_Open.png" class="curtain curtain-left curtain-open" alt="left curtain open">
-		  <img src="Images/Curtain_Open.png" class="curtain curtain-right curtain-open" alt="right curtain open">
-
+		  <picture class="curtain curtain-left curtain-open">
+		    <source media="(max-width: 768px)" srcset="Images/Curtain_Open_Mobile.png">
+		    <img src="Images/Curtain_Open.png" alt="left curtain open">
+		  </picture>
+		  
+		  <picture class="curtain curtain-right curtain-open">
+		    <source media="(max-width: 768px)" srcset="Images/Curtain_Open_Mobile.png">
+		    <img src="Images/Curtain_Open.png" alt="right curtain open">
+		  </picture>
+		  
 		  <div class="hero-content">
 		    <h1 class="main-title">CESARICA</h1>
 		    <h2 class="sub-title">steakhouse & club</h2>

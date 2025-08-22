@@ -11,8 +11,16 @@ $showAnimation = $isHomePage;
 
 <nav class="nav-bar">
   <span class="vert-line left-line"></span>
+
   <div class="nav-inner">
-    <ul class="nav-menu">
+    <!-- Hamburger button for mobile -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <ul class="nav-menu" id="nav-menu">
       <li><a href="Home">Home</a></li>
       <li><a href="Cuisine">Cuisine</a></li>
       <li><a href="Menu">Menu</a></li>
@@ -21,26 +29,33 @@ $showAnimation = $isHomePage;
       <li><a href="Cigars">Cigars</a></li>
     </ul>
   </div>
+
   <span class="vert-line right-line"></span>
-  <div class="events"><a href="Events"><img src="Images/events-svgrepo-com.svg" alt=""></a></div>
+
+  <div class="events">
+    <a href="Events"><img src="Images/events-svgrepo-com.svg" alt=""></a>
+  </div>
 </nav>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const navbar = document.querySelector('.nav-bar');
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('nav-menu');
   const showAnimation = <?php echo $showAnimation ? 'true' : 'false'; ?>;
-  console.log('showAnimation:', showAnimation);
 
+  // Desktop animation
   if (showAnimation) {
-    console.log('Animation will run: removing "show" and adding it after 100ms');
-    navbar.classList.remove('show'); // start hidden
-    setTimeout(() => {
-      navbar.classList.add('show'); // slide down animation
-      console.log('Added "show" class');
-    }, 100);
+    navbar.classList.remove('show');
+    setTimeout(() => navbar.classList.add('show'), 100);
   } else {
-    console.log('Showing navbar immediately');
-    navbar.classList.add('show'); // show immediately on other pages
+    navbar.classList.add('show');
   }
+
+  // Mobile menu toggle
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    hamburger.classList.toggle('open');
+  });
 });
 </script>

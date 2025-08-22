@@ -181,11 +181,32 @@ body {
 
 /* Responsive Support */
 @media (max-width: 768px) {
+    .title-card-container{
+        height: 50vh;
+    }
+
+    .menu-list-container{
+        padding: 10px 0 0 0;
+    }
+
     .two-columns {
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 
     .menu-column {
         width: 100%;
+    }
+
+    .menu-section h3{
+        font-size: 35px;
+    }
+
+    .subsection-title {
+        font-size: 30px;
+    }
+
+    .menu-item .price{
+        min-width: 50px;
+        font-size: 27px;
     }
 }

@@ -35,6 +35,18 @@
                         </div>
                         <span class="price"><span class="price">5</span></span>
                     </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <span class="name">Mahmut .3</span>
+                        </div>
+                        <span class="price"><span class="price">2.5</span></span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <span class="name">Mahmut .5</span>
+                        </div>
+                        <span class="price"><span class="price">3.5</span></span>
+                    </div>
                 </div>
 
                 <div class="subsection">

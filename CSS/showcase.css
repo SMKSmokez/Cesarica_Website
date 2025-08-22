@@ -114,3 +114,17 @@ body {
 .menu-section {
     margin-bottom: 20px;
 }
+
+@media (max-width:786px){
+    .title-card-container{
+        height: 50vh;
+    }
+
+    .image-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 0;
+    grid-auto-rows: auto; 
+    align-items: start; 
+}
+}

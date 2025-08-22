@@ -11,7 +11,7 @@ body {
 
 section {
   position: relative;
-  height: 100vh;
+  height: auto;
   padding: 40px 20px;
   text-align: center;
   display: flex;
@@ -31,6 +31,7 @@ h1, h2, h3 {
   margin-top: -102px; /* Pull up behind navbar */
   z-index: 0; /* Place behind navbar */
 }
+
 /* Title Section with Video and Curtains */
 .title-card-container {
   position: relative;
@@ -162,24 +163,26 @@ h1, h2, h3 {
 /* Cuisine */
 .cuisine-card-container {
   background: var(--main-color);
-  height: 100vh;
+  min-height: 100vh; /* use min-height instead of fixed height */
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   overflow: hidden;
-  padding: 40px 0;
+  padding: 40px 20px; /* add horizontal breathing room */
 }
 
 .cuisine-content {
   display: flex;
   align-items: center;
   width: 100%;
+  max-width: 1200px; /* contain content nicely */
+  margin: 0 auto;
   z-index: 2;
 }
 
 .cuisine-image-wrapper {
-  width: 1024px;
+  flex: 1;
   position: relative;
   display: flex;
   justify-content: flex-end;
@@ -188,8 +191,8 @@ h1, h2, h3 {
 
 .cuisine-image-background {
   position: absolute;
-  left: 0;
-  width: 400px; /* Fixed background width */
+  left: -200px;
+  width: 40%; /* make proportional */
   height: 100%;
   background: linear-gradient(to left, var(--second-color), transparent);
   opacity: 0.85;
@@ -197,7 +200,8 @@ h1, h2, h3 {
 }
 
 .cuisine-image {
-  width: 680px;
+  width: 100%;
+  max-width: 680px;
   height: auto;
   object-fit: cover;
   position: relative;
@@ -205,44 +209,44 @@ h1, h2, h3 {
 }
 
 .cuisine-text {
-  width: 650px;
+  flex: 1;
   color: white;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
+  padding: 20px;
 }
 
 .cuisine-subtitle {
-  font-size: 40px;
+  font-size: 2rem;
   color: var(--deco-color);
-  line-height: 0.8;
+  line-height: 1;
 }
 
 .cuisine-title {
-  font-size: 50px;
+  font-size: 2.5rem;
   font-weight: 800;
   color: white;
   margin-bottom: 20px;
-  line-height: 0.9;
+  line-height: 1.1;
 }
 
 .cuisine-description {
-  font-size: 20px;
+  font-size: 1rem;
   line-height: 1.5;
   max-width: 600px;
-  margin-bottom: 50px;
-  align-self: center;
+  margin: 0 auto 30px;
 }
 
 .cuisine-button {
-  width: 260px;
-  padding: 5px 15px;
-  font-size: 25px;
+  width: auto;
+  padding: 10px 25px;
+  font-size: 1.2rem;
   background: transparent;
   border: 2px solid var(--deco-color);
-  border-radius: 2px;
+  border-radius: 4px;
   color: var(--deco-color);
   cursor: pointer;
   transition: 0.3s ease;
@@ -641,4 +645,90 @@ h1, h2, h3 {
     height: 100%;    
     display: block;
     object-fit: fill; 
+}
+
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+  .title-card-container {
+    height: 100vh;
+    padding: 20px 10px;
+  }
+
+  .hero-content {
+    top: 20%;
+    padding: 20px;
+  }
+
+  .main-title {
+    font-size: 2.2em; /* smaller for mobile */
+  }
+
+  .sub-title {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+  }
+
+  .experience-button {
+    font-size: 18px;
+    padding: 15px 8px;
+    bottom: 80px; /* move button up slightly */
+  }
+
+  /* Curtains adjustments */
+  .curtain-left,
+  .curtain-right {
+    width: 50%; /* keep same, but adjust if needed */
+    height: 100%;
+  }
+
+  .video-background {
+    height: 100%;
+  }
+
+  .bg-video {
+    object-fit: cover; /* ensures video fills container without distortion */
+  }
+
+  /*Cuisine*/
+  .cuisine-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cuisine-image-wrapper {
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .cuisine-image-background {
+    display: none; /* hide background overlay for simplicity on mobile */
+  }
+
+  .cuisine-image {
+    max-width: 90%;
+  }
+
+  .cuisine-text {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .cuisine-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .cuisine-title {
+    font-size: 2rem;
+  }
+
+  .cuisine-description {
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+  }
+
+  .cuisine-button {
+    font-size: 1rem;
+    padding: 8px 20px;
+  }
 }

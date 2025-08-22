@@ -240,7 +240,7 @@
                     <span class="price"><span class="weight">2kg</span><span class="price">250</span></span>
                 </div>
                  <!-- Premium Dry-Aged Meats Subsection -->
-                <h4 class="subsection-title">Premium (Dry-Aged 40+ Days)</h4>
+                <h4 class="subsection-title">Premium(Dry-Aged 40+ Days)</h4>
                 <div class="double-underline"></div>
                 <div class="menu-item">
                     <div class="item-details">
@@ -262,7 +262,7 @@
                 </div>
                 
                 <!-- Ultra Premium Dry-Aged Meats Subsection -->
-                <h4 class="subsection-title">Ultra Premium (Dry-Aged 40+ Days)</h4>
+                <h4 class="subsection-title">Ultra Premium(Dry-Aged 40+ Days)</h4>
                 <div class="double-underline"></div>
                 <div class="menu-item">
                     <div class="item-details">
@@ -324,7 +324,7 @@
                 </div>
                 <div class="menu-item">
                     <div class="item-details">
-                        <span class="name">Homemade Bread with Pate</span>
+                        <span class="name">Homemade  Bread with Pate</span>
                     </div>
                     <span class="price"><span class="weight">200g</span><span class="price">4</span></span>
                 </div>

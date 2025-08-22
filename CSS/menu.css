@@ -163,3 +163,53 @@ body {
     right: -5px;
     color: rgba(255,255,255,0.3);
 }
+
+@media (max-width:786px) {
+    .title-card-container{
+        height: 50vh;
+    }
+
+    .menu-list-container{
+        padding: 10px 0 0 0;
+    }
+
+    .menu-section h3{
+        font-size: 45px;
+    }
+
+    .menu-section .subsection-title{
+        font-size: 22px;
+        margin: 0px 0 2px 0;
+        padding-top: 10px;
+    }
+
+    .menu-item{
+        padding: 15px 0;
+    }
+
+    .menu-item .weight{
+        font-size: 22px;
+        margin-right: 0;
+        padding-right: 0px;
+    }
+
+    .menu-item .item-details{
+        flex-grow: 1;
+        min-width: 200px;
+    }
+
+    .menu-item .item-details .name{
+        font-size: 28px;
+        line-height: 0.8;
+        margin-top: 0;
+    }
+
+    .menu-item .item-details .ingredients{
+        font-size: 17px;
+    }
+
+    .menu-item .price{
+        min-width: 50px;
+        font-size: 22px;
+    }
+}
