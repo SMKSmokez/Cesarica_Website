@@ -7,7 +7,7 @@
         stroke-dashoffset="0">
     <animate attributeName="stroke-dashoffset"
              from="0" to="-1146"
-             dur="10s"
+             dur="15s"
              repeatCount="indefinite"
              easing="linear" />
   </path>

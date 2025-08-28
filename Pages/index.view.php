@@ -16,16 +16,16 @@
 
 		  <!-- Closed curtains -->
 		  <img src="Images/Curtain_Closed.png" class="curtain curtain-left curtain-closed" alt="left curtain closed">
-		  <img src="Images/Curtain_Closed.png" class="curtain curtain-right rightx2 curtain-closed" alt="right curtain closed">
+		  <img src="Images/Curtain_Closed.png" class="curtain curtain-right curtain-closed" alt="right curtain closed">
+
+		  <img src="Images/Curtain_Mobile.png" alt="curtain-mobile" class="curtain curtain-mobile">
 
 		  <!-- Open curtains (start hidden) -->
 		  <picture class="curtain curtain-left curtain-open">
-		    <source media="(max-width: 768px)" srcset="Images/Curtain_Open_Mobile.png">
 		    <img src="Images/Curtain_Open.png" alt="left curtain open">
 		  </picture>
 		  
 		  <picture class="curtain curtain-right curtain-open">
-		    <source media="(max-width: 768px)" srcset="Images/Curtain_Open_Mobile.png">
 		    <img src="Images/Curtain_Open.png" alt="right curtain open">
 		  </picture>
 		  
@@ -70,10 +70,9 @@
 				<h2 class="menu-title">From Our Selection</h2>
 				<div class="menu-items">
 					<div class="menu-row">
-						<span class="menu-name"><b>Wagyu</b></span>
+						<span class="menu-name"><b>Beef Tartar</b></span>
 						<div class="menu-details">
-							<span class="menu-grams">100g</span>
-							<span class="menu-price">150</span>
+							<span class="menu-price">18</span>
 						</div>
 					</div>
 					<div class="menu-row">
@@ -235,12 +234,13 @@
 		document.addEventListener("DOMContentLoaded", function() {
 		  const closedCurtains = document.querySelectorAll('.curtain-closed');
 		  const openCurtains = document.querySelectorAll('.curtain-open');
-
+		  const mobileCurtains = document.querySelector('.curtain-mobile');
 		  // Show closed curtains initially for 3 seconds
 		  setTimeout(() => {
 		    // Start the 2-second morph animation
 		    closedCurtains.forEach(c => c.classList.add('animate'));
 		    openCurtains.forEach(c => c.classList.add('animate'));
+			mobileCurtains.classList.add('raised');
 		  }, 1000);
 	  
 		  // After the 2-second animation (total 5s), remove the closed curtains

@@ -169,7 +169,7 @@ body {
 
 @media (max-width:786px) {
     .title-card-container{
-        height: 700px;
+        height: 50vh;
     }
 
     .menu-list-container{
