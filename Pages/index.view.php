@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="CSS/flatpicker.css">
 <?php require_once 'Parts/head.php'?>
 <body>
 	<?php require_once 'Parts/nav.php'; ?>
@@ -35,8 +36,31 @@
 		  </div>
 		  <button class="experience-button">Reserve An Experience</button>
 		</section>
-
-        <div class="section-connector-1">
+		
+		<!-- Reservation Overlay (hidden by default) -->
+  		<div id="reservationOverlay" class="overlay hidden">
+  		  <div class="modal">
+  		    <h2>Reserve Your Experience</h2>
+  		    <form id="reservationForm" class="reservation-forum">
+  		      <label>Full Name:<br>
+  		        <input type="text" name="fullname" required>
+  		      </label><br><br>
+		
+  		      <label>Individuals:<br>
+  		        <input type="tel" name="number" required>
+  		      </label><br><br>
+		
+  		      <label>Reservation Time:<br>
+  		        <input type="text"  id="reservationTime" name="time" required readonly>
+  		      </label><br><br>
+		
+  		      <button type="submit">Confirm</button>
+  		      <button type="button" id="closeOverlay">Cancel</button>
+  		    </form>
+  		  </div>
+  		</div>
+        
+		<div class="section-connector-1">
             <img src="Images/Deco_1.svg" alt="gold line divider" />
         </div>
         
@@ -218,6 +242,7 @@
 	</div>
 	<?php require_once "Parts/footer.php" ?>
 	<script>
+		//Navbar Scrips
 		document.addEventListener("DOMContentLoaded", function() {
   		  const navbar = document.querySelector('.nav-bar');
   		  if (!navbar) return;
@@ -231,6 +256,7 @@
   		  }, 100);
   		});
 		
+		//Curtain Scripts
 		document.addEventListener("DOMContentLoaded", function() {
 		  const closedCurtains = document.querySelectorAll('.curtain-closed');
 		  const openCurtains = document.querySelectorAll('.curtain-open');
@@ -248,6 +274,44 @@
 		    closedCurtains.forEach(c => c.remove());
 		  }, 3000);  // 3s wait + 2s animation = 5s total
 		});
+
+		//Reservation Overlay Scripts
+		const reserveBtn = document.querySelector(".experience-button");
+  		const overlay = document.getElementById("reservationOverlay");
+  		const closeBtn = document.getElementById("closeOverlay");
+
+  		// Open overlay on button click
+  		reserveBtn.addEventListener("click", () => {
+  		  overlay.classList.remove("hidden");
+  		});
+	
+  		// Close overlay on cancel
+  		closeBtn.addEventListener("click", () => {
+  		  overlay.classList.add("hidden");
+  		});
+	</script>
+	<!--Force 30 Min Reservation Window-->
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	<script>
+	document.addEventListener("DOMContentLoaded", function() {
+	  flatpickr("#reservationTime", {
+	    enableTime: true,
+	    dateFormat: "Y-m-d H:i",
+	    time_24hr: true,
+	    minuteIncrement: 30,
+	    minDate: "today",
+		appendTo: document.querySelector(".modal"),
+		disableMobile: true,
+		allowInput: false,
+		onClose: (selectedDates, dateStr, instance) => {
+		    const minutes = selectedDates[0].getMinutes();
+		    if (minutes % 30 !== 0) {
+		      alert("Please select a valid 30-minute interval.");
+		      instance.clear();
+		    }
+		  }
+		});
+	});
 	</script>
 </body>
 </html>
