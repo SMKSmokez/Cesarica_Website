@@ -44,15 +44,16 @@
   		    <form id="reservationForm" class="reservation-forum">
   		      <label>Full Name:<br>
   		        <input type="text" name="fullname" required>
-  		      </label><br><br>
+  		      </label><br>
 		
   		      <label>Individuals:<br>
-  		        <input type="tel" name="number" required>
-  		      </label><br><br>
+  		        <input type="number" id="individuals" name="number" min="1" max="30" inputmode="numeric" required>
+				<span id="individualsError" class="error-text" aria-live="polite" style="display:none; color:red; padding-top: 5px; font-size: 15px; font-family: var(--main-font);"></span>
+  		      </label><br>
 		
   		      <label>Reservation Time:<br>
   		        <input type="text"  id="reservationTime" name="time" required readonly>
-  		      </label><br><br>
+  		      </label><br>
 		
   		      <button type="submit">Confirm</button>
   		      <button type="button" id="closeOverlay">Cancel</button>
@@ -288,7 +289,64 @@
   		// Close overlay on cancel
   		closeBtn.addEventListener("click", () => {
   		  overlay.classList.add("hidden");
-  		});
+		});
+
+		//Individuals Checker
+		// Delay-on-blur validation for "Individuals"
+		const individualsInput = document.getElementById("individuals");
+		const individualsError = document.getElementById("individualsError");
+		let blurTimeout;
+
+		function setError(msg) {
+		  individualsError.textContent = msg;
+		  individualsError.style.display = "block";
+		  individualsInput.classList.add("input-error");
+		  individualsInput.setCustomValidity(msg); // integrates with browser validation
+		}
+
+		function clearError() {
+		  individualsError.textContent = "";
+		  individualsError.style.display = "none";
+		  individualsInput.classList.remove("input-error");
+		  individualsInput.setCustomValidity("");
+		}
+
+		function validateIndividuals() {
+		  const raw = individualsInput.value.trim();
+		  if (raw === "") { setError("Please enter a number between 1 and 30."); return false; }
+		
+		  const n = Number(raw);
+		  if (!Number.isInteger(n)) { setError("Use whole numbers only."); return false; }
+		
+		  const min = Number(individualsInput.min) || 1;
+		  const max = Number(individualsInput.max) || 30;
+		  if (n < min || n > max) { setError(`Please enter a value from ${min} to ${max}.`); return false; }
+		
+		  clearError();
+		  return true;
+		}
+
+		// Delay the check 500ms after blur
+		individualsInput.addEventListener("blur", () => {
+		  clearTimeout(blurTimeout);
+		  blurTimeout = setTimeout(validateIndividuals, 100);
+		});
+
+		// As they type, clear the error so it doesn't stick around
+		individualsInput.addEventListener("input", () => {
+		  if (individualsError.textContent) clearError();
+		});
+
+		// Optional: guard form submission too
+		const form = document.getElementById("reservationForm");
+		if (form) {
+		  form.addEventListener("submit", (e) => {
+		    if (!validateIndividuals()) {
+		      e.preventDefault();
+		      individualsInput.focus();
+		    }
+		  });
+		}
 	</script>
 	<!--Force 30 Min Reservation Window-->
 	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -300,17 +358,36 @@
 	    time_24hr: true,
 	    minuteIncrement: 30,
 	    minDate: "today",
+		minTime: "10:00",
+		maxTime: "22:00",
+		defaultHour: 19,
 		appendTo: document.querySelector(".modal"),
 		disableMobile: true,
 		allowInput: false,
-		onClose: (selectedDates, dateStr, instance) => {
-		    const minutes = selectedDates[0].getMinutes();
-		    if (minutes % 30 !== 0) {
-		      alert("Please select a valid 30-minute interval.");
-		      instance.clear();
-		    }
-		  }
-		});
+		onClose: function(selectedDates, dateStr, instance) {
+    	  // If nothing selected, wait 1 second and check again
+    	  if (!selectedDates.length) {
+    	    setTimeout(() => {
+    	      const newDates = instance.selectedDates;
+    	      if (!newDates.length) return; // still nothing, exit safely
+
+    	      const minutes = newDates[0].getMinutes();
+    	      if (minutes % 30 !== 0) {
+    	        alert("Please select a valid 30-minute interval.");
+    	        instance.clear();
+    	      }
+    	    }, 1000); // 1000ms = 1 second
+    	    return;
+    	  }
+
+    	  // Normal check
+    	  const minutes = selectedDates[0].getMinutes();
+    	  if (minutes % 30 !== 0) {
+    	    alert("Please select a valid 30-minute interval.");
+    	    instance.clear();
+    	  }
+    	}
+  		});
 	});
 	</script>
 </body>

@@ -1,14 +1,22 @@
 @font-face {
     font-family: MarcellusSC;
-    src: url(Fonts\MarcellusSC-Regular.ttf);
+    src: url(../Fonts/MarcellusSC-Regular.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
+
 @font-face {
     font-family: Zodiac-Light;
-    src: url(Fonts\Zodiak-Light.otf);
+    src: url(../Fonts/Zodiak-Light.otf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
+
 @font-face {
     font-family: Gwendolyn;
-    src: url(Fonts\Gwendolyn-Bold.ttf);
+    src: url(..//Fonts/Gwendolyn-Bold.ttf) format('truetype');
+    font-weight: 700;
+    font-style: normal;
 }
 
 :root {
@@ -17,8 +25,8 @@
     --deco-color:#F5C45E;
     --text-normal:#F9F9F9;
     --text-fancy:#F5C45E;
-    --main-font: 'MarcellusSC', serif;
-    --second-font: 'Zodiak', serif;
+    --main-font: "MarcellusSC", serif;
+    --second-font: "Zodiak", serif;
 }
 
 *{
