@@ -43,17 +43,19 @@
   		    <h2>Reserve Your Experience</h2>
   		    <form id="reservationForm" class="reservation-forum">
   		      <label>Full Name:<br>
-  		        <input type="text" name="fullname" required>
-  		      </label><br>
-		
-  		      <label>Individuals:<br>
-  		        <input type="number" id="individuals" name="number" min="1" max="30" inputmode="numeric" required>
-				<span id="individualsError" class="error-text" aria-live="polite" style="display:none; color:red; padding-top: 5px; font-size: 15px; font-family: var(--main-font);"></span>
-  		      </label><br>
-		
-  		      <label>Reservation Time:<br>
-  		        <input type="text"  id="reservationTime" name="time" required readonly>
-  		      </label><br>
+				  <input type="text" id="fullname" name="fullname" required>
+				  <span id="fullnameError" class="error-text" aria-live="polite" style="display:none; color:red; padding-top: 5px; font-size: 15px; font-family: var(--main-font);"></span>
+				</label><br>
+				
+				<label>Individuals:<br>
+				  <input type="number" id="individuals" name="number" min="1" max="30" inputmode="numeric" required>
+				  <span id="individualsError" class="error-text" aria-live="polite" style="display:none; color:red; padding-top: 5px; font-size: 15px; font-family: var(--main-font);"></span>
+				</label><br>
+				
+				<label>Reservation Time:<br>
+				  <input type="text" id="reservationTime" name="time" required readonly>
+				  <span id="timeError" class="error-text" aria-live="polite" style="display:none; color:red; padding-top: 5px; font-size: 15px; font-family: var(--main-font);"></span>
+				</label><br>
 		
   		      <button type="submit">Confirm</button>
   		      <button type="button" id="closeOverlay">Cancel</button>
@@ -243,152 +245,193 @@
 	</div>
 	<?php require_once "Parts/footer.php" ?>
 	<script>
-		//Navbar Scrips
-		document.addEventListener("DOMContentLoaded", function() {
-  		  const navbar = document.querySelector('.nav-bar');
-  		  if (!navbar) return;
-
-  		  // Start with navbar hidden (no .show)
-  		  navbar.classList.remove('show');
-
-  		  // Trigger dropdown animation by adding .show after a short delay
-  		  setTimeout(() => {
-  		    navbar.classList.add('show');
-  		  }, 100);
-  		});
-		
-		//Curtain Scripts
-		document.addEventListener("DOMContentLoaded", function() {
-		  const closedCurtains = document.querySelectorAll('.curtain-closed');
-		  const openCurtains = document.querySelectorAll('.curtain-open');
-		  const mobileCurtains = document.querySelector('.curtain-mobile');
-		  // Show closed curtains initially for 3 seconds
-		  setTimeout(() => {
-		    // Start the 2-second morph animation
-		    closedCurtains.forEach(c => c.classList.add('animate'));
-		    openCurtains.forEach(c => c.classList.add('animate'));
-			mobileCurtains.classList.add('raised');
-		  }, 1000);
-	  
-		  // After the 2-second animation (total 5s), remove the closed curtains
-		  setTimeout(() => {
-		    closedCurtains.forEach(c => c.remove());
-		  }, 3000);  // 3s wait + 2s animation = 5s total
-		});
-
-		//Reservation Overlay Scripts
-		const reserveBtn = document.querySelector(".experience-button");
-  		const overlay = document.getElementById("reservationOverlay");
-  		const closeBtn = document.getElementById("closeOverlay");
-
-  		// Open overlay on button click
-  		reserveBtn.addEventListener("click", () => {
-  		  overlay.classList.remove("hidden");
-  		});
+	  // Navbar Scripts
+	  document.addEventListener("DOMContentLoaded", function() {
+	    const navbar = document.querySelector('.nav-bar');
+	    if (!navbar) return;
 	
-  		// Close overlay on cancel
-  		closeBtn.addEventListener("click", () => {
-  		  overlay.classList.add("hidden");
-		});
+	    // Start with navbar hidden (no .show)
+	    navbar.classList.remove('show');
+	
+	    // Trigger dropdown animation by adding .show after a short delay
+	    setTimeout(() => {
+	      navbar.classList.add('show');
+	    }, 100);
+	  });
+  
+	  // Curtain Scripts
+	  document.addEventListener("DOMContentLoaded", function() {
+	    const closedCurtains = document.querySelectorAll('.curtain-closed');
+	    const openCurtains = document.querySelectorAll('.curtain-open');
+	    const mobileCurtains = document.querySelector('.curtain-mobile');
+	    // Show closed curtains initially for 3 seconds
+	    setTimeout(() => {
+	      // Start the 2-second morph animation
+	      closedCurtains.forEach(c => c.classList.add('animate'));
+	      openCurtains.forEach(c => c.classList.add('animate'));
+	      if (mobileCurtains) mobileCurtains.classList.add('raised');
+	    }, 1000);
+	
+	    // After the 2-second animation (total 5s), remove the closed curtains
+	    setTimeout(() => {
+	      closedCurtains.forEach(c => c.remove());
+	    }, 3000);  // 3s wait + 2s animation = 5s total
+	  });
+  
+	  // Reservation Overlay Scripts
+	  const reserveBtn = document.querySelector(".experience-button");
+	  const overlay = document.getElementById("reservationOverlay");
+	  const closeBtn = document.getElementById("closeOverlay");
+  
+	  // Open overlay on button click
+	  reserveBtn.addEventListener("click", () => {
+	    overlay.classList.remove("hidden");
+	  });
+  
+	  // Close overlay on cancel
+	  closeBtn.addEventListener("click", () => {
+	    overlay.classList.add("hidden");
+	  });
+  
+	  // ---- Error Handling ----
+	  function makeValidator(inputEl, errorEl, validateFn) {
+	    function setError(msg) {
+	      errorEl.textContent = msg;
+	      errorEl.style.display = "block";
+	      inputEl.classList.add("input-error");
+	      inputEl.setCustomValidity(msg);
+	    }
+	
+	    function clearError() {
+	      errorEl.textContent = "";
+	      errorEl.style.display = "none";
+	      inputEl.classList.remove("input-error");
+	      inputEl.setCustomValidity("");
+	    }
+	
+	    function validate() {
+	      const msg = validateFn(inputEl.value.trim());
+	      if (msg) {
+	        setError(msg);
+	        return false;
+	      } else {
+	        clearError();
+	        return true;
+	      }
+	    }
+	
+	    // delay validation on blur
+	    let blurTimeout;
+	    inputEl.addEventListener("blur", () => {
+	      blurTimeout = setTimeout(validate, 300);
+	    });
+	    inputEl.addEventListener("focus", () => clearTimeout(blurTimeout));
+	
+	    return validate;
+	  }
+  
+	  // Full Name
+	  const fullnameInput = document.getElementById("fullname");
+	  const fullnameError = document.getElementById("fullnameError");
+	  const validateFullname = makeValidator(fullnameInput, fullnameError, (val) => {
+	    if (val === "") return "Please enter your full name.";
+	    if (val.length < 2) return "Name must be at least 2 characters.";
+	    if (!/^[a-zA-Z\s]+$/.test(val)) return "Name can only contain letters and spaces.";
+	    return "";
+	  });
+  
+	  // Individuals
+	  const individualsInput = document.getElementById("individuals");
+	  const individualsError = document.getElementById("individualsError");
+	  const validateIndividuals = makeValidator(individualsInput, individualsError, (val) => {
+	    if (val === "") return "Please enter a number between 1 and 30.";
+	    const n = Number(val);
+	    if (!Number.isInteger(n)) return "Use whole numbers only.";
+	    if (n < 1 || n > 30) return "Please enter a value from 1 to 30.";
+	    return "";
+	  });
+  
+	  // Reservation Time
+	  const timeInput = document.getElementById("reservationTime");
+	  const timeError = document.getElementById("timeError");
+	  let timeTimeout;
+	    
+	  function showTimeError(msg) {
+	    timeError.textContent = msg;
+	    timeError.style.display = "block";
+	    timeInput.classList.add("input-error");
+	    timeInput.setCustomValidity(msg);
+	  }
+	  
+	  function clearTimeError() {
+	    timeError.textContent = "";
+	    timeError.style.display = "none";
+	    timeInput.classList.remove("input-error");
+	    timeInput.setCustomValidity("");
+	  }
+	  
+	  function validateTime(val) {
+	    if (val === "") return "Please select a reservation time.";
+	  
+	    const parsed = new Date(val);
+	    if (isNaN(parsed.getTime())) return "Invalid time format. Please use the picker.";
+	  
+	    const minutes = parsed.getMinutes();
+	    if (minutes % 30 !== 0) return "Please select a valid 30-minute interval (e.g., 10:00, 10:30, 11:00).";
+	  
+	    return "";
+	  }
+	  
+	  // Debounced validation on input (fires 1s after last change)
+	  timeInput.addEventListener("input", () => {
+	    clearTimeout(timeTimeout);
+	    timeTimeout = setTimeout(() => {
+	      const msg = validateTime(timeInput.value.trim());
+	      if (msg) {
+	        showTimeError(msg);
+	      } else {
+	        clearTimeError();
+	      }
+	    }, 1000);
+	  });
 
-		//Individuals Checker
-		// Delay-on-blur validation for "Individuals"
-		const individualsInput = document.getElementById("individuals");
-		const individualsError = document.getElementById("individualsError");
-		let blurTimeout;
+	  const form = document.getElementById("reservationForm");
 
-		function setError(msg) {
-		  individualsError.textContent = msg;
-		  individualsError.style.display = "block";
-		  individualsInput.classList.add("input-error");
-		  individualsInput.setCustomValidity(msg); // integrates with browser validation
-		}
-
-		function clearError() {
-		  individualsError.textContent = "";
-		  individualsError.style.display = "none";
-		  individualsInput.classList.remove("input-error");
-		  individualsInput.setCustomValidity("");
-		}
-
-		function validateIndividuals() {
-		  const raw = individualsInput.value.trim();
-		  if (raw === "") { setError("Please enter a number between 1 and 30."); return false; }
-		
-		  const n = Number(raw);
-		  if (!Number.isInteger(n)) { setError("Use whole numbers only."); return false; }
-		
-		  const min = Number(individualsInput.min) || 1;
-		  const max = Number(individualsInput.max) || 30;
-		  if (n < min || n > max) { setError(`Please enter a value from ${min} to ${max}.`); return false; }
-		
-		  clearError();
-		  return true;
-		}
-
-		// Delay the check 500ms after blur
-		individualsInput.addEventListener("blur", () => {
-		  clearTimeout(blurTimeout);
-		  blurTimeout = setTimeout(validateIndividuals, 100);
-		});
-
-		// As they type, clear the error so it doesn't stick around
-		individualsInput.addEventListener("input", () => {
-		  if (individualsError.textContent) clearError();
-		});
-
-		// Optional: guard form submission too
-		const form = document.getElementById("reservationForm");
-		if (form) {
-		  form.addEventListener("submit", (e) => {
-		    if (!validateIndividuals()) {
-		      e.preventDefault();
-		      individualsInput.focus();
-		    }
-		  });
-		}
+	  form.addEventListener("submit", (e) => {
+	    // Validate the time input immediately
+	    const msg = validateTime(timeInput.value.trim());
+	  
+	    if (msg) {
+	      // Stop submission
+	      e.preventDefault();
+	  
+	      // Show error immediately
+	      showTimeError(msg);
+	  
+	      // Focus the field
+	      timeInput.focus();
+	    }
+	  });
+	</script>
 	</script>
 	<!--Force 30 Min Reservation Window-->
 	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 	<script>
-	document.addEventListener("DOMContentLoaded", function() {
-	  flatpickr("#reservationTime", {
-	    enableTime: true,
-	    dateFormat: "Y-m-d H:i",
-	    time_24hr: true,
-	    minuteIncrement: 30,
-	    minDate: "today",
-		minTime: "10:00",
-		maxTime: "22:00",
-		defaultHour: 19,
-		appendTo: document.querySelector(".modal"),
-		disableMobile: true,
-		allowInput: false,
-		onClose: function(selectedDates, dateStr, instance) {
-    	  // If nothing selected, wait 1 second and check again
-    	  if (!selectedDates.length) {
-    	    setTimeout(() => {
-    	      const newDates = instance.selectedDates;
-    	      if (!newDates.length) return; // still nothing, exit safely
-
-    	      const minutes = newDates[0].getMinutes();
-    	      if (minutes % 30 !== 0) {
-    	        alert("Please select a valid 30-minute interval.");
-    	        instance.clear();
-    	      }
-    	    }, 1000); // 1000ms = 1 second
-    	    return;
-    	  }
-
-    	  // Normal check
-    	  const minutes = selectedDates[0].getMinutes();
-    	  if (minutes % 30 !== 0) {
-    	    alert("Please select a valid 30-minute interval.");
-    	    instance.clear();
-    	  }
-    	}
-  		});
-	});
+	  document.addEventListener("DOMContentLoaded", function() {
+	    flatpickr("#reservationTime", {
+	      enableTime: true,
+	      dateFormat: "Y-m-d H:i",
+	      time_24hr: true,
+	      minuteIncrement: 30,
+	      minDate: "today",
+	      minTime: "10:00",
+	      maxTime: "22:00",
+	      defaultHour: 19,
+	      appendTo: document.querySelector(".modal"),
+	      disableMobile: true,
+	      allowInput: false
+	    });
+	  });
 	</script>
 </body>
 </html>
